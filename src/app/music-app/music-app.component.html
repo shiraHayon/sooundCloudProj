@@ -1,0 +1,33 @@
+<h1>Musis App</h1>
+<div class="container">
+  <section class="search-container">
+    <h2>Search for Music</h2>
+    <input [(ngModel)]="userSearch" type="text" placeholder="search for music">
+    <button (click)="search()" (keyup.enter)="search()">search!</button>
+    <div>
+      <ul>
+        <li *ngFor="let track of tracksToPresent" (click)="selectedTrackData(track)">
+          {{ track.title }}
+        </li>
+      </ul>
+      <button (click)="showNextSearchResults()" *ngIf="showNextButton">show more results</button>
+      <i class="fa fa-th-large" aria-hidden="true"></i>
+      <i class="fa fa-list" aria-hidden="true"></i>
+    </div>
+  </section>
+  <section class="search-result-container">
+    <h2>Selected Track</h2>
+    <img src="{{selectedTrackImg}}">
+    <iframe width="100%" height="100" scrolling="no" frameborder="no" src=""></iframe>
+  </section>
+  <section class="search-history-container">
+    <h2>Search History</h2>
+    <div>
+      <ul>
+        <li *ngFor="let item of searchHistory" (click)="search(item)">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
